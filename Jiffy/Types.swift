@@ -18,55 +18,87 @@ protocol Reply {
 class Parser<u, a> {
 }
 
-class Thunk<u, a>: Parser<u, a> {
-    init<stream: Stream, reply: Reply where stream.u == u, reply.a == a>(f: stream -> reply) {
+class Thunk<u, a, stream: Stream, reply: Reply where stream.u == u, reply.a == a>: Parser<u, a> {
+    let thunk: stream -> reply
+    init(thunk: stream -> reply) {
+        self.thunk = thunk
     }
 }
 
 class ParserRef<u, a>: Parser<u, a> {
+    var parser: Parser<u, a>?
+    init() {
+        self.parser = nil
+    }
     func Put(parser: Parser<u, a>) {
-
+        self.parser = parser
     }
 }
 
-class Fmap<u, a>: Parser<u, a> {
-    init<t>(f: t -> a, parser: Parser<u, t>) {
-
+class Fmap<u, a, t>: Parser<u, a> {
+    let f: t -> a
+    let parser: Parser<u, t>
+    init(f: t -> a, parser: Parser<u, t>) {
+        self.f = f
+        self.parser = parser
     }
 }
 
 class Pure<u, a>: Parser<u, a> {
+    let x: a
     init(x: a) {
+        self.x = x
     }
 }
 
-class Bind<u, a>: Parser<u, a> {
-    init<t>(parser: Parser<u, t>, f: t -> Parser<u, a>) {
+class Bind<u, a, t>: Parser<u, a> {
+    let parser: Parser<u, t>
+    let f: t -> Parser<u, a>
+    init(parser: Parser<u, t>, f: t -> Parser<u, a>) {
+        self.parser = parser
+        self.f = f
     }
 }
 
-class Left<u, a>: Parser<u, a> {
-    init<b>(left: Parser<u, a>, right: Parser<u, b>) {
+class Left<u, a, b>: Parser<u, a> {
+    let left: Parser<u, a>
+    let right: Parser<u, b>
+    init(left: Parser<u, a>, right: Parser<u, b>) {
+        self.left = left
+        self.right = right
     }
 }
 
-class Right<u, b>: Parser<u, b> {
-    init<a>(left: Parser<u, a>, right: Parser<u, b>) {
+class Right<u, a, b>: Parser<u, b> {
+    let left: Parser<u, a>
+    let right: Parser<u, b>
+    init(left: Parser<u, a>, right: Parser<u, b>) {
+        self.left = left
+        self.right = right
     }
 }
 
-class Ap<u, a>: Parser<u, a> {
-    init<t>(parserF: Parser<u, t -> a>, parser: Parser<u, t>) {
+class Ap<u, a, t>: Parser<u, a> {
+    let parserF: Parser<u, t -> a>
+    let parser: Parser<u, t>
+    init(parserF: Parser<u, t -> a>, parser: Parser<u, t>) {
+        self.parserF = parserF
+        self.parser = parser
     }
 }
 
 class Empty<u, a>: Parser<u, a> {
     init() {
+        // TODO
     }
 }
 
 class Alt<u, a>: Parser<u, a> {
+    let left: Parser<u, a>
+    let right: Parser<u, a>
     init(left: Parser<u, a>, right: Parser<u, a>) {
+        self.left = left
+        self.right = right
     }
 }
 
