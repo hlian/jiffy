@@ -6,7 +6,7 @@ Included is a work-in-progress parser for the [Doge Serialized Object Notation](
 
 # Parser combinators?
 
-Are fantastic, and you can read all about them here: ["Dive into parser combinators"](http://blog.fogcreek.com/fparsec/). Whoever wrote that must be a pretty OK dude. Gist: you can quickly and easily write composable, readable parsers for complicated grammars. Here, for example, is a parser for floating-point numbers:
+Are fantastic, and you can read all about them here: ["Dive into parser combinators."](http://blog.fogcreek.com/fparsec/)    Whoever wrote that must be a pretty OK dude. Gist: you can quickly and easily write composable, readable parsers for complicated grammars. Here, for example, is a parser for floating-point numbers:
 
     let pdigit = oneOf(Array("0123456789"))
     let pdigit1 = oneOf(Array("123456789"))
