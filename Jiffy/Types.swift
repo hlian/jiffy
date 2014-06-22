@@ -1,26 +1,48 @@
 import Foundation
 
-protocol Stream {
-    typealias u
-    func Peek() -> u
-    mutating func Skip()
-}
-
-protocol Reply {
-    typealias a
-    func Result() -> a
-    func IsLovely() -> Bool
-    func IsError() -> Bool
-}
-
 // a - token type
 // u - result type
 class Parser<u, a> {
+    func Run(Stream<u>) -> Reply<a> {
+        return Reply.Error("wrong class")
+    }
 }
 
-class Thunk<u, a, stream: Stream, reply: Reply where stream.u == u, reply.a == a>: Parser<u, a> {
-    let thunk: stream -> reply
-    init(thunk: stream -> reply) {
+class Stream<u> {
+    let hay: u[]
+    var i = 0
+    typealias StreamSnapshot = Int
+
+    init(hay: u[]) {
+        self.hay = hay
+    }
+
+    func Peek() -> u  {
+        let x = self.hay.startIndex
+        return self.hay[x]
+    }
+
+    func Skip() {
+        i += 1
+    }
+
+    func Snapshot() -> StreamSnapshot {
+        return self.i
+    }
+
+    func Rewind(i: StreamSnapshot) {
+        self.i = i
+    }
+}
+
+enum Reply<a> {
+    case Error(String)
+    case Lovely(a)
+}
+
+class Thunk<u, a>: Parser<u, a> {
+    let thunk: Stream<u> -> Reply<a>
+    init(thunk: Stream<u> -> Reply<a>) {
         self.thunk = thunk
     }
 }
@@ -147,16 +169,4 @@ func <%<u, a, t>(x: a, left: Parser<u, t>) -> Parser<u, a> {
 
 func <**><u, a, t>(parser: Parser<u, t>, parserF: Parser<u, t -> a>) -> Parser<u, a> {
     return Ap(parserF: parserF, parser: parser)
-}
-
-func liftA<u, a, t>(f: a -> t, parser: Parser<u, a>) -> Parser<u, t> {
-    return pure(f) <*> parser
-}
-
-func liftA2<u, a, s, t>(f: a -> s -> t, parser: Parser<u, a>, parser2: Parser<u, s>) -> Parser<u, t> {
-    return f <%> parser <*> parser2
-}
-
-func liftA3<u, a, r, s, t>(f: a -> r -> s -> t, parser: Parser<u, a>, parser2: Parser<u, r>, parser3: Parser<u, s>) -> Parser<u, t> {
-    return f <%> parser <*> parser2 <*> parser3
 }
