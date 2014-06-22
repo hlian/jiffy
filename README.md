@@ -24,5 +24,5 @@ Generics and typeclasses I mean protocols are ideal for something like parser co
 
 If you're coming from Haskell or F#, there's one slight change you should be aware of: `<$>` isn't a valid operator name in Swift, so I went with `<%>` instead. Mnemonic: they're right next to each other!
 
-Yours,
+Yours,<br>
 Hao.
