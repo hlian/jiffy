@@ -1,6 +1,6 @@
 # ?
 
-Jiffy is a parser-combinator library written in Swift. Its combinators are heavily inspired by FParsec; its types, by Haskell Applicative monad.
+Jiffy is a parser-combinator library written in Swift, heavily inspired by [FParsec](http://www.quanttec.com/fparsec/), which in turn originates from [Parsec](http://legacy.cs.uu.nl/daan/parsec.html). 
 
 # And?
 
