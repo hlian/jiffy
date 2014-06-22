@@ -2,7 +2,7 @@
 
 Jiffy is a parser-combinator library written in Swift, heavily inspired by [FParsec](http://www.quanttec.com/fparsec/), which in turn originates from [Parsec](http://legacy.cs.uu.nl/daan/parsec.html). 
 
-Included is a work-in-progress parser for the [Doge Serialized Object Notation](http://dogeon.org/), the premier textual data representation of our time.
+Included is a work-in-progress parser for the [Doge Serialized Object Notation](http://dogeon.org/), the premier textual data representation of our time. See: [DSON.swift](https://github.com/hlian/jiffy/blob/master/Jiffy/DSON.swift).
 
 # Parser combinators?
 
