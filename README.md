@@ -22,4 +22,7 @@ Are fantastic, and you can read all about them here: ["Dive into parser combinat
 [Swift](http://haskell.org/) is a new language with a compiler that crashes and hangs a lot.
 Generics and typeclasses I mean protocols are ideal for something like parser combinators, don't you think? Having custom operators doesn't hurt either.
 
--hlian
+If you're coming from Haskell or F#, there's one slight change you should be aware of: `<$>` isn't a valid operator name in Swift, so I went with `<%>` instead. Mnemonic: they're right next to each other!
+
+Yours,
+Hao.
