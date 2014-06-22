@@ -17,6 +17,10 @@ Are fantastic, and you can read all about them here: ["Dive into parser combinat
     
 (If IEEE were to replace the `e` keyword with the DOGE `very` -- and I think we can all agree they should.)
 
+If you allow for some leeway, I hope to convince you that the code is a trivial transcription of this diagram:
+
+![DSON floating-point number diagram](http://i.imgur.com/bHhToCN.png)
+
 # Swift?
 
 [Swift](http://haskell.org/) is a new language with a compiler that crashes and hangs a lot.
