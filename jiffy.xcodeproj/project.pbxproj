@@ -12,6 +12,7 @@
 		3F1DCBC41957823400965619 /* Combinators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1DCBA0195781C700965619 /* Combinators.swift */; };
 		3F1DCBC51957823400965619 /* DSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1DCBA1195781C700965619 /* DSON.swift */; };
 		3F1DCBC61957823400965619 /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1DCBA2195781C700965619 /* Types.swift */; };
+		3FE523FF198DABBC002928AC /* Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE523FE198DABBC002928AC /* Operators.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -34,6 +35,7 @@
 		3F1DCBA7195781FD00965619 /* libjiffy.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libjiffy.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F1DCBAA195781FD00965619 /* jiffy.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = jiffy.h; sourceTree = "<group>"; };
 		3F1DCBAC195781FD00965619 /* jiffy.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = jiffy.m; sourceTree = "<group>"; };
+		3FE523FE198DABBC002928AC /* Operators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Operators.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,6 +52,7 @@
 		3F1DCB991957814D00965619 = {
 			isa = PBXGroup;
 			children = (
+				3FE523FE198DABBC002928AC /* Operators.swift */,
 				3F1DCBA0195781C700965619 /* Combinators.swift */,
 				3F1DCBA1195781C700965619 /* DSON.swift */,
 				3F1DCBA2195781C700965619 /* Types.swift */,
@@ -131,6 +134,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3F1DCBC41957823400965619 /* Combinators.swift in Sources */,
+				3FE523FF198DABBC002928AC /* Operators.swift in Sources */,
 				3F1DCBC51957823400965619 /* DSON.swift in Sources */,
 				3F1DCBC61957823400965619 /* Types.swift in Sources */,
 				3F1DCBAD195781FD00965619 /* jiffy.m in Sources */,
@@ -251,6 +255,7 @@
 				3F1DCBBB195781FD00965619 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
