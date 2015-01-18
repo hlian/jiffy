@@ -9,11 +9,11 @@ class Parser<u, a> {
 }
 
 class Stream<u> {
-    let hay: u[]
+    let hay: [u]
     var i = 0
     typealias StreamSnapshot = Int
 
-    init(hay: u[]) {
+    init(hay: [u]) {
         self.hay = hay
     }
 
@@ -49,7 +49,7 @@ class Thunk<u, a>: Parser<u, a> {
 
 class ParserRef<u, a>: Parser<u, a> {
     var parser: Parser<u, a>?
-    init() {
+    override init() {
         self.parser = nil
     }
     func Put(parser: Parser<u, a>) {
