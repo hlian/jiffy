@@ -2,14 +2,14 @@ import Foundation
 
 
 // The default precedence is 100.
-operator infix <%> { associativity left }
-operator infix >>= { associativity left precedence 80 }
-operator infix <*> { associativity left }
-operator infix <* { associativity left }
-operator infix *> { associativity left }
-operator infix <|> { associativity left precedence 90 }
-operator infix <% { associativity left }
-operator infix <**> { associativity left }
+infix operator <%> { associativity left }
+infix operator >>= { associativity left precedence 80 }
+infix operator <*> { associativity left }
+infix operator <* { associativity left }
+infix operator *> { associativity left }
+infix operator <|> { associativity left precedence 90 }
+infix operator <% { associativity left }
+infix operator <**> { associativity left }
 
 // Functor
 func <%><u, a, t>(f: t -> a, parser: Parser<u, t>) -> Parser<u, a> {

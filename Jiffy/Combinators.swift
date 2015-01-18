@@ -14,9 +14,9 @@ func satisfy<u>(pred: u -> Bool) -> Parser<u, u> {
     return Thunk(thunk: f)
 }
 
-func many<u, a>(parser: Parser<u, a>) -> Parser<u, a[]> {
-    let f: Stream<u> -> Reply<a[]> = { (var stream) in
-        var results: a[] = []
+func many<u, a>(parser: Parser<u, a>) -> Parser<u, [a]> {
+    let f: Stream<u> -> Reply<[a]> = { (var stream) in
+        var results: [a] = []
         loop: while (true) {
             let r = parser.Run(stream)
             switch (r) {
@@ -31,8 +31,8 @@ func many<u, a>(parser: Parser<u, a>) -> Parser<u, a[]> {
     return Thunk(thunk: f)
 }
 
-func many1<u, a>(parser: Parser<u, a>) -> Parser<u, a[]> {
-    let f: Stream<u> -> Reply<a[]> = { (var stream) in
+func many1<u, a>(parser: Parser<u, a>) -> Parser<u, [a]> {
+    let f: Stream<u> -> Reply<[a]> = { (var stream) in
         let r = many(parser).Run(stream)
         switch (r) {
         case .Lovely(let result):
@@ -68,20 +68,21 @@ func one<u: Equatable>(x: u) -> Parser<u, u> {
     return satisfy(f)
 }
 
-func oneOf<u: Equatable>(xs: u[]) -> Parser<u, u> {
+func oneOf<u: Equatable>(xs: [u]) -> Parser<u, u> {
     return satisfy { (y: u) in
-        let filtered: u[] = xs.filter { $0 == y }
+        let filtered: [u] = xs.filter { $0 == y }
         return filtered.count > 0
     }
 }
 
 func string(xs: String) -> Parser<Character, String> {
+    assertionFailure("not implemented")
 }
 
-func sepBy<u, a, t>(parser: Parser<u, a>, separator: Parser<u, t>) -> Parser<u, a[]> {
-
+func sepBy<u, a, t>(parser: Parser<u, a>, separator: Parser<u, t>) -> Parser<u, [a]> {
+    assertionFailure("not implemented")
 }
 
 func between<u, a, t>(parens: Parser<u, t>, parser: Parser<u, a>) -> Parser<u, a> {
-
+    assertionFailure("not implemented")
 }
