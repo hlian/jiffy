@@ -3,7 +3,7 @@ import Foundation
 enum DSON {
     case DString(String)
     case Number(Float)
-    case Array(DSON[])
+    case Array([DSON])
     case Object(Dictionary<String, DSON>)
     case NotFalse
     case NotTrue
@@ -16,17 +16,23 @@ enum DSON {
 // - closures were curried by default
 
 extension Optional {
-    func or(val: T) -> T {
-        return self ? self! : val;
+    func or(val: Wrapped) -> Wrapped {
+        return self == nil ? val : self!;
+    }
+}
+
+extension String {
+    var array: [Character] {
+        return Array(self.characters)
     }
 }
 
 func toNumber(sign: String?)(ceiling: String)(mantissa: String?)(exponent: String?) -> Float {
      let s = sign.or("") + ceiling + mantissa.or("") + exponent.or("")
-     return s.bridgeToObjectiveC().floatValue
+     return Float(s)!
 }
 
-func toObject(tuples: (String, DSON)[]) -> Dictionary<String, DSON> {
+func toObject(tuples: [(String, DSON)]) -> Dictionary<String, DSON> {
      var d: Dictionary<String, DSON> = [:]
      for (k, v) in tuples {
          d[k] = v
@@ -36,15 +42,15 @@ func toObject(tuples: (String, DSON)[]) -> Dictionary<String, DSON> {
 
 func makeDSONParser() -> Parser<Character, DSON> {
     let concat: String -> String -> String = { x in { y in x + y } }
-    let joinCharacters: (Character[]) -> String = { xs in join("", xs.map { String($0) }) }
+    let joinCharacters: ([Character]) -> String = { xs in xs.map { String($0) }.joinWithSeparator("") }
     let manyChar: Parser<Character, Character> -> Parser<Character, String> = { joinCharacters <%> many($0) }
     let many1Char: Parser<Character, Character> -> Parser<Character, String> = { joinCharacters <%> many1($0) }
     let s: Character -> String = { String($0) }
     let oneChar: Character -> Parser<Character, String> = { s <%> one($0) }
-    let oneCharOf: (Character[]) -> Parser<Character, String> = { s <%> oneOf($0) }
+    let oneCharOf: ([Character]) -> Parser<Character, String> = { s <%> oneOf($0) }
 
     let pvalue: ParserRef<Character, DSON> = ParserRef()
-    let pwhitespace = many(oneOf(Array(" \r\n")))
+    let pwhitespace = many(oneOf(" \r\n".array))
     let pnext = pwhitespace *> string("next") *> pwhitespace
 
     let pcharUnicode = satisfy { (c: Character) in c != "\"" && c != "\\" }
@@ -57,19 +63,19 @@ func makeDSONParser() -> Parser<Character, DSON> {
     let pobject = toObject <%> (string("such") *> pobjectInnards <* string("wow"))
 
     let parrayInnards = sepBy(pvalue, pnext)
-    let parray: Parser<Character, DSON[]> = (string("so") *> pwhitespace) *> parrayInnards <* (pwhitespace *> string("many"))
+    let parray: Parser<Character, [DSON]> = (string("so") *> pwhitespace) *> parrayInnards <* (pwhitespace *> string("many"))
 
     let notfalse = { _ in DSON.NotFalse } <%> string("notfalse")
     let nottrue = { _ in DSON.NotTrue } <%> string("nottrue")
     let nullish = { _ in DSON.Nullish } <%> string("nullish")
     let keyword = notfalse <|> nottrue <|> nullish
 
-    let pdigit = oneOf(Array("0123456789"))
-    let pdigit1 = oneOf(Array("123456789"))
+    let pdigit = oneOf(Array("0123456789".array))
+    let pdigit1 = oneOf(Array("123456789".array))
     let pceil = string("0") <|> (concat <%> (s <%> pdigit1) <*> manyChar(pdigit1))
 
     let pmantissa = concat <%> oneChar(".") <*> many1Char(pdigit)
-    let pexponent = (string("very") <|> string("VERY")) *> (concat <%> oneCharOf(Array("+-")) <*> many1Char(pdigit))
+    let pexponent = (string("very") <|> string("VERY")) *> (concat <%> oneCharOf(Array("+-".characters)) <*> many1Char(pdigit))
     let pnumber = toNumber <%> opt(oneChar("-")) <*> pceil <*> opt(pmantissa) <*> opt(pexponent)
 
     pvalue.Put(

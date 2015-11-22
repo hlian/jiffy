@@ -2,7 +2,8 @@ import Foundation
 
 
 func satisfy<u>(pred: u -> Bool) -> Parser<u, u> {
-    let f: Stream<u> -> Reply<u> = { (var stream) in
+    let f: Stream<u> -> Reply<u> = {
+        stream in
         if (pred(stream.Peek())) {
             return Reply.Error("not satisfied")
         } else {
@@ -14,15 +15,16 @@ func satisfy<u>(pred: u -> Bool) -> Parser<u, u> {
     return Thunk(thunk: f)
 }
 
-func many<u, a>(parser: Parser<u, a>) -> Parser<u, a[]> {
-    let f: Stream<u> -> Reply<a[]> = { (var stream) in
-        var results: a[] = []
+func many<u, a>(parser: Parser<u, a>) -> Parser<u, [a]> {
+    let f: Stream<u> -> Reply<[a]> = {
+        stream in
+        var results: [a] = []
         loop: while (true) {
             let r = parser.Run(stream)
             switch (r) {
             case .Lovely(let result):
                 results.append(result)
-            case .Error(let error):
+            case .Error(_):
                 break loop
             }
         }
@@ -31,8 +33,9 @@ func many<u, a>(parser: Parser<u, a>) -> Parser<u, a[]> {
     return Thunk(thunk: f)
 }
 
-func many1<u, a>(parser: Parser<u, a>) -> Parser<u, a[]> {
-    let f: Stream<u> -> Reply<a[]> = { (var stream) in
+func many1<u, a>(parser: Parser<u, a>) -> Parser<u, [a]> {
+    let f: Stream<u> -> Reply<[a]> = {
+        stream in
         let r = many(parser).Run(stream)
         switch (r) {
         case .Lovely(let result):
@@ -49,13 +52,14 @@ func many1<u, a>(parser: Parser<u, a>) -> Parser<u, a[]> {
 }
 
 func opt<u, a>(parser: Parser<u, a>) -> Parser<u, a?> {
-    let f: Stream<u> -> Reply<a?> = { (var stream) in
+    let f: Stream<u> -> Reply<a?> = {
+        stream in
         let i = stream.Snapshot()
         let r = parser.Run(stream)
         switch (r) {
         case .Lovely(let result):
             return Reply.Lovely(result)
-        case .Error(let error):
+        case .Error(_):
             stream.Rewind(i)
             return Reply.Lovely(nil)
         }
@@ -68,20 +72,21 @@ func one<u: Equatable>(x: u) -> Parser<u, u> {
     return satisfy(f)
 }
 
-func oneOf<u: Equatable>(xs: u[]) -> Parser<u, u> {
+func oneOf<u: Equatable>(xs: [u]) -> Parser<u, u> {
     return satisfy { (y: u) in
-        let filtered: u[] = xs.filter { $0 == y }
+        let filtered = xs.filter { $0 == y }
         return filtered.count > 0
     }
 }
 
 func string(xs: String) -> Parser<Character, String> {
+    preconditionFailure("gotta write this")
 }
 
-func sepBy<u, a, t>(parser: Parser<u, a>, separator: Parser<u, t>) -> Parser<u, a[]> {
-
+func sepBy<u, a, t>(parser: Parser<u, a>, _ separator: Parser<u, t>) -> Parser<u, [a]> {
+    preconditionFailure("gotta write this")
 }
 
-func between<u, a, t>(parens: Parser<u, t>, parser: Parser<u, a>) -> Parser<u, a> {
-
+func between<u, a, t>(parens: Parser<u, t>, _ parser: Parser<u, a>) -> Parser<u, a> {
+    preconditionFailure("gotta write this")
 }

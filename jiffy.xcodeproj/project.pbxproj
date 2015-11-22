@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		3FAD34761C018DFD00F10F55 /* Jiffy.h in Headers */ = {isa = PBXBuildFile; fileRef = 3FAD34751C018DFD00F10F55 /* Jiffy.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3FAD347B1C018E3700F10F55 /* Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FAD345F1C018D9200F10F55 /* Operators.swift */; };
+		3FAD347C1C018E3700F10F55 /* Combinators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1DCBA0195781C700965619 /* Combinators.swift */; };
+		3FAD347D1C018E3700F10F55 /* DSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1DCBA1195781C700965619 /* DSON.swift */; };
+		3FAD347E1C018E3700F10F55 /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1DCBA2195781C700965619 /* Types.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -138,6 +142,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3FAD347B1C018E3700F10F55 /* Operators.swift in Sources */,
+				3FAD347C1C018E3700F10F55 /* Combinators.swift in Sources */,
+				3FAD347D1C018E3700F10F55 /* DSON.swift in Sources */,
+				3FAD347E1C018E3700F10F55 /* Types.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

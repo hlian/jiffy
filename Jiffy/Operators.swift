@@ -2,18 +2,19 @@ import Foundation
 
 
 // The default precedence is 100.
-operator infix <%> { associativity left }
-operator infix >>= { associativity left precedence 80 }
-operator infix <*> { associativity left }
-operator infix <* { associativity left }
-operator infix *> { associativity left }
-operator infix <|> { associativity left precedence 90 }
-operator infix <% { associativity left }
-operator infix <**> { associativity left }
+infix operator <%> { associativity left }
+infix operator >>= { associativity left precedence 80 }
+infix operator <*> { associativity left }
+infix operator <* { associativity left }
+infix operator *> { associativity left }
+infix operator <|> { associativity left precedence 90 }
+infix operator <% { associativity left }
+infix operator <**> { associativity left }
 
 // Functor
 func <%><u, a, t>(f: t -> a, parser: Parser<u, t>) -> Parser<u, a> {
-    let f: Stream<u> -> Reply<a> = { (var stream) in
+    let f: Stream<u> -> Reply<a> = {
+        stream in
         switch (parser.Run(stream)) {
         case .Lovely(let result):
             return Reply.Lovely(f(result))
@@ -26,14 +27,16 @@ func <%><u, a, t>(f: t -> a, parser: Parser<u, t>) -> Parser<u, a> {
 
 // Applicative
 func pure<u, a>(x: a) -> Parser<u, a> {
-    let f: Stream<u> -> Reply<a> = { (var stream) in
+    let f: Stream<u> -> Reply<a> = {
+        stream in
         return Reply.Lovely(x)
     }
     return Thunk(thunk: f)
 }
 
 func <*><u, a, t>(parserF: Parser<u, t -> a>, parser: Parser<u, t>) -> Parser<u, a> {
-    let f: Stream<u> -> Reply<a> = { (var stream) in
+    let f: Stream<u> -> Reply<a> = {
+        stream in
         switch (parserF.Run(stream)) {
         case .Lovely(let g):
             switch (parser.Run(stream)) {
@@ -63,12 +66,13 @@ func *><u, a, b>(left: Parser<u, a>, right: Parser<u, b>) -> Parser<u, b> {
 
 // Alternative
 func <|><u, a>(left: Parser<u, a>, right: Parser<u, a>) -> Parser<u, a> {
-    let f: Stream<u> -> Reply<a> = { (var stream) in
+    let f: Stream<u> -> Reply<a> = {
+        stream in
         let snapshot = stream.Snapshot()
         switch (left.Run(stream)) {
         case .Lovely(let result):
             return Reply.Lovely(result)
-        case .Error(let error):
+        case .Error(_):
             stream.Rewind(snapshot)
             return right.Run(stream)
         }
@@ -78,7 +82,8 @@ func <|><u, a>(left: Parser<u, a>, right: Parser<u, a>) -> Parser<u, a> {
 
 // Monad
 func >>=<u, a, t>(parser: Parser<u, t>, binder: t -> Parser<u, a>) -> Parser<u, a> {
-    let f: Stream<u> -> Reply<a> = { (var stream) in
+    let f: Stream<u> -> Reply<a> = {
+        stream in
         switch (parser.Run(stream)) {
         case .Lovely(let result):
             return binder(result).Run(stream)
