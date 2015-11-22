@@ -7,39 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3F1DCBAB195781FD00965619 /* jiffy.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3F1DCBAA195781FD00965619 /* jiffy.h */; };
-		3F1DCBAD195781FD00965619 /* jiffy.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F1DCBAC195781FD00965619 /* jiffy.m */; };
-		3F1DCBC41957823400965619 /* Combinators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1DCBA0195781C700965619 /* Combinators.swift */; };
-		3F1DCBC51957823400965619 /* DSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1DCBA1195781C700965619 /* DSON.swift */; };
-		3F1DCBC61957823400965619 /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1DCBA2195781C700965619 /* Types.swift */; };
-		3FE523FF198DABBC002928AC /* Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE523FE198DABBC002928AC /* Operators.swift */; };
+		3FAD34761C018DFD00F10F55 /* Jiffy.h in Headers */ = {isa = PBXBuildFile; fileRef = 3FAD34751C018DFD00F10F55 /* Jiffy.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		3F1DCBA5195781FD00965619 /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "include/$(PRODUCT_NAME)";
-			dstSubfolderSpec = 16;
-			files = (
-				3F1DCBAB195781FD00965619 /* jiffy.h in CopyFiles */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		3F1DCBA0195781C700965619 /* Combinators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Combinators.swift; path = Jiffy/Combinators.swift; sourceTree = "<group>"; };
 		3F1DCBA1195781C700965619 /* DSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DSON.swift; path = Jiffy/DSON.swift; sourceTree = "<group>"; };
 		3F1DCBA2195781C700965619 /* Types.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Types.swift; path = Jiffy/Types.swift; sourceTree = "<group>"; };
-		3F1DCBA7195781FD00965619 /* libjiffy.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libjiffy.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		3F1DCBAA195781FD00965619 /* jiffy.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = jiffy.h; sourceTree = "<group>"; };
-		3F1DCBAC195781FD00965619 /* jiffy.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = jiffy.m; sourceTree = "<group>"; };
-		3FE523FE198DABBC002928AC /* Operators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Operators.swift; sourceTree = "<group>"; };
+		3FAD345F1C018D9200F10F55 /* Operators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Operators.swift; path = Jiffy/Operators.swift; sourceTree = "<group>"; };
+		3FAD34731C018DFD00F10F55 /* Jiffy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Jiffy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3FAD34751C018DFD00F10F55 /* Jiffy.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Jiffy.h; sourceTree = "<group>"; };
+		3FAD34771C018DFD00F10F55 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		3F1DCBA4195781FD00965619 /* Frameworks */ = {
+		3FAD346F1C018DFD00F10F55 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -52,11 +34,11 @@
 		3F1DCB991957814D00965619 = {
 			isa = PBXGroup;
 			children = (
-				3FE523FE198DABBC002928AC /* Operators.swift */,
+				3FAD345F1C018D9200F10F55 /* Operators.swift */,
 				3F1DCBA0195781C700965619 /* Combinators.swift */,
 				3F1DCBA1195781C700965619 /* DSON.swift */,
 				3F1DCBA2195781C700965619 /* Types.swift */,
-				3F1DCBA9195781FD00965619 /* jiffy */,
+				3FAD34741C018DFD00F10F55 /* Jiffy */,
 				3F1DCBA8195781FD00965619 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -64,39 +46,51 @@
 		3F1DCBA8195781FD00965619 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				3F1DCBA7195781FD00965619 /* libjiffy.a */,
+				3FAD34731C018DFD00F10F55 /* Jiffy.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		3F1DCBA9195781FD00965619 /* jiffy */ = {
+		3FAD34741C018DFD00F10F55 /* Jiffy */ = {
 			isa = PBXGroup;
 			children = (
-				3F1DCBAA195781FD00965619 /* jiffy.h */,
-				3F1DCBAC195781FD00965619 /* jiffy.m */,
+				3FAD34751C018DFD00F10F55 /* Jiffy.h */,
+				3FAD34771C018DFD00F10F55 /* Info.plist */,
 			);
-			path = jiffy;
+			path = Jiffy;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
+/* Begin PBXHeadersBuildPhase section */
+		3FAD34701C018DFD00F10F55 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3FAD34761C018DFD00F10F55 /* Jiffy.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
 /* Begin PBXNativeTarget section */
-		3F1DCBA6195781FD00965619 /* jiffy */ = {
+		3FAD34721C018DFD00F10F55 /* Jiffy */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 3F1DCBB9195781FD00965619 /* Build configuration list for PBXNativeTarget "jiffy" */;
+			buildConfigurationList = 3FAD34781C018DFD00F10F55 /* Build configuration list for PBXNativeTarget "Jiffy" */;
 			buildPhases = (
-				3F1DCBA3195781FD00965619 /* Sources */,
-				3F1DCBA4195781FD00965619 /* Frameworks */,
-				3F1DCBA5195781FD00965619 /* CopyFiles */,
+				3FAD346E1C018DFD00F10F55 /* Sources */,
+				3FAD346F1C018DFD00F10F55 /* Frameworks */,
+				3FAD34701C018DFD00F10F55 /* Headers */,
+				3FAD34711C018DFD00F10F55 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = jiffy;
-			productName = jiffy;
-			productReference = 3F1DCBA7195781FD00965619 /* libjiffy.a */;
-			productType = "com.apple.product-type.library.static";
+			name = Jiffy;
+			productName = Jiffy;
+			productReference = 3FAD34731C018DFD00F10F55 /* Jiffy.framework */;
+			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
 
@@ -104,10 +98,11 @@
 		3F1DCB9A1957814D00965619 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0600;
+				LastSwiftUpdateCheck = 0710;
+				LastUpgradeCheck = 0710;
 				TargetAttributes = {
-					3F1DCBA6195781FD00965619 = {
-						CreatedOnToolsVersion = 6.0;
+					3FAD34721C018DFD00F10F55 = {
+						CreatedOnToolsVersion = 7.1.1;
 					};
 				};
 			};
@@ -123,21 +118,26 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				3F1DCBA6195781FD00965619 /* jiffy */,
+				3FAD34721C018DFD00F10F55 /* Jiffy */,
 			);
 		};
 /* End PBXProject section */
 
+/* Begin PBXResourcesBuildPhase section */
+		3FAD34711C018DFD00F10F55 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
-		3F1DCBA3195781FD00965619 /* Sources */ = {
+		3FAD346E1C018DFD00F10F55 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3F1DCBC41957823400965619 /* Combinators.swift in Sources */,
-				3FE523FF198DABBC002928AC /* Operators.swift in Sources */,
-				3F1DCBC51957823400965619 /* DSON.swift in Sources */,
-				3F1DCBC61957823400965619 /* Types.swift in Sources */,
-				3F1DCBAD195781FD00965619 /* jiffy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -147,6 +147,8 @@
 		3F1DCB9E1957814D00965619 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ENABLE_TESTABILITY = YES;
+				ONLY_ACTIVE_ARCH = YES;
 			};
 			name = Debug;
 		};
@@ -156,7 +158,7 @@
 			};
 			name = Release;
 		};
-		3F1DCBBA195781FD00965619 /* Debug */ = {
+		3FAD34791C018DFD00F10F55 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -173,33 +175,46 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				METAL_ENABLE_DEBUG_INFO = YES;
-				ONLY_ACTIVE_ARCH = YES;
-				OTHER_LDFLAGS = "-ObjC";
+				INFOPLIST_FILE = Jiffy/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = org.haolian.Jiffy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
 			};
 			name = Debug;
 		};
-		3F1DCBBB195781FD00965619 /* Release */ = {
+		3FAD347A1C018DFD00F10F55 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -216,23 +231,37 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				COPY_PHASE_STRIP = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				METAL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = "-ObjC";
+				INFOPLIST_FILE = Jiffy/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = org.haolian.Jiffy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
 		};
@@ -248,14 +277,13 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		3F1DCBB9195781FD00965619 /* Build configuration list for PBXNativeTarget "jiffy" */ = {
+		3FAD34781C018DFD00F10F55 /* Build configuration list for PBXNativeTarget "Jiffy" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				3F1DCBBA195781FD00965619 /* Debug */,
-				3F1DCBBB195781FD00965619 /* Release */,
+				3FAD34791C018DFD00F10F55 /* Debug */,
+				3FAD347A1C018DFD00F10F55 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

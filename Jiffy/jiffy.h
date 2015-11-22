@@ -1,13 +1,19 @@
 //
-//  jiffy.h
-//  jiffy
+//  Jiffy.h
+//  Jiffy
 //
-//  Created by hao on 6/22/14.
+//  Created by Hao on 11/22/15.
 //
 //
 
-#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
-@interface jiffy : NSObject
+//! Project version number for Jiffy.
+FOUNDATION_EXPORT double JiffyVersionNumber;
 
-@end
+//! Project version string for Jiffy.
+FOUNDATION_EXPORT const unsigned char JiffyVersionString[];
+
+// In this header, you should import all the public headers of your framework using statements like #import <Jiffy/PublicHeader.h>
+
+
